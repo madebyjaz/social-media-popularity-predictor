@@ -1,0 +1,23 @@
+name: multimodal-popularity
+channels:
+  - conda-forge
+  - defaults
+  - pytorch
+  - nvidia
+dependencies:
+  - python=3.10
+  - pytorch
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=11.8
+  - scikit-learn
+  - pandas
+  - matplotlib
+  - seaborn
+  - jupyterlab
+  - pip
+  - pip:
+      - transformers==4.35.0
+      - datasets
+      - evaluate
+      - tqdm
