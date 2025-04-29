@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=generate_bert
+#SBATCH --job-name=bert_feat_made
 #SBATCH --output=bert_output_%j.log
 #SBATCH --error=bert_error_%j.log
 #SBATCH --ntasks=1
