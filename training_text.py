@@ -62,3 +62,54 @@ class PopularityClassifier(nn.Module):
         x = F.relu(self.fc1(x))
         x = self.dropout(x)
         return self.fc2(x)
+    
+
+# Check if GPU is available and use it if possible if not use cpu
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model = PopularityClassifier(input_dim=X_train.shape[1]).to(device)
+
+# === Defining the loss function and optimizer ===
+
+''' For multi-class classification use CrossEntropyLoss. It:
+1. Combines softmax and negative log-likelihood loss in one single class function.
+
+Also use Adam optimizer for faster convergence. It:
+1. Is an adaptive learning rate optimization algorithm that can be used instead of the classical stochastic gradient descent procedure
+3. Is computationally efficient and requires little memory. '''
+
+loss_fn = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
+
+# === Training the model ===
+'''The model is trained using the Adam optimizer and CrossEntropyLoss for multi-class classification.
+    The model is trained for 100 epochs'''
+
+print("Training the bert model...")
+epochs = 100 #trainig starting out maybe 400 next iteration
+train_losses = []
+
+for epoch in range(epochs):
+    model.train()
+    total_loss = 0
+    for xb, yb in train_dl:
+        xb, yb = xb.to(device), yb.to(device)
+        optimizer.zero_grad()
+        preds = model(xb)
+        loss = loss_fn(preds, yb)
+        loss.backward()
+        optimizer.step()
+        total_loss += loss.item()
+    avg_loss = total_loss / len(train_dl)
+    train_losses.append(avg_loss)
+    print(f"Epoch {epoch+1}, Loss: {avg_loss:.4f}")
+
+
+model.eval()
+all_preds = []
+with torch.no_grad():
+    for xb, _ in test_dl:
+        xb = xb.to(device)
+        outputs = model(xb)
+        preds = torch.argmax(outputs, dim=1)
+        all_preds.extend(preds.cpu().numpy())
+
