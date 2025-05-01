@@ -85,7 +85,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
     The model is trained for 100 epochs'''
 
 print("Training the bert model...")
-epochs = 100 #trainig starting out maybe 400 next iteration
+epochs = 200 #trainig starting out maybe 400 next iteration
 train_losses = []
 
 for epoch in range(epochs):
