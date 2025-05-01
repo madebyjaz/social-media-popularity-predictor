@@ -6,6 +6,7 @@ import numpy as num
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
 
 
 # === Loading the BERT features dataset ===
@@ -41,3 +42,30 @@ model = PopularityClassifier(input_dim=X_test.shape[1]).to(device)
 model.load_state_dict(torch.load("popularity_classifier.pt"))
 model.eval()
 
+
+# === Making predictions ===
+'''The model is used to make predictions on the test set. 
+    The predictions are converted to class labels using the label encoder.'''
+all_preds = []
+with torch.no_grad():
+    for i in range(0, len(X_test_tensor), 32):
+        batch = X_test_tensor[i:i+32].to(device)
+        outputs = model(batch)
+        _, preds = torch.max(outputs, 1)
+        all_preds.extend(preds.cpu().numpy())
+# Convert predictions to class labels
+all_preds = le.inverse_transform(all_preds)
+# === Saving predictions ===        
+'''The predictions are saved to a CSV file for further analysis.'''
+predictions_df = pd.DataFrame(all_preds, columns=['predictions'])
+predictions_df.to_csv("predictions.csv", index=False)
+
+
+# === Load saved predictions and test labels ===
+print("🔍 Loading saved test labels and predictions...")
+y_test = num.load("y_test.npy")
+all_preds = num.load("all_preds.npy")
+
+# === Load training losses ===
+print("📈 Loading training loss values...")
+train_losses = num.load("training_losses.npy")
