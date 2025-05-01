@@ -113,3 +113,21 @@ with torch.no_grad():
         preds = torch.argmax(outputs, dim=1)
         all_preds.extend(preds.cpu().numpy())
 
+# Saving the test data and predictions
+print("\n ✅Done! Now saving the test data & predictions to numpy files...")
+num.save("y_test.npy", y_test)
+num.save("all_preds.npy", num.array(all_preds))
+
+
+# === Saving the trained model ===
+torch.save(model.state_dict(), "popularity_classifier.pt")
+print("\n✅ Andd we're Done with the training! The model was saved to popularity_classifier.pt")
+
+
+# === Saving the training losses ===
+'''The training losses are saved to a numpy file for future reference. 
+    This can be useful for plotting the training loss curve or for resuming training later.'''
+print("\n ✅Done! Now saving the training losses to train_losses.npy...")
+num.save("training_losses.npy", num.array(train_losses))
+
+
