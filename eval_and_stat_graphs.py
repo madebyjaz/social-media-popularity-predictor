@@ -153,7 +153,7 @@ print("✅Training loss scatter plot saved as training_loss_scatter.png")
 
 # Using a bar plot to visualize the training loss over epochs  (Grouped by 10 Epochs)
 plt.subplot(4, 1, 3)
-sns.barplot(x="Epoch Group", y="Loss", data=df, estimator=num.mean, ci=None, palette="Blues_d", label='Avg Loss')
+sns.barplot(x="Epoch Group", y="Loss", data=df, errorbar=None, color="steelblue", label='Avg Loss')
 plt.xlabel("Epoch Group")
 
 plt.legend()
@@ -181,7 +181,7 @@ plt.show()
 print("✅Training loss histogram saved as training_loss_histogram.png")
 
 # Using a box plot to visualize the distribution of training loss values
-plt.subplot(4, 1, 5)
+plt.subplot(4, 1, 4)
 sns.boxplot(x="Loss", data=df, color='pink', label='Loss Distribution')
 plt.legend()
 plt.tight_layout()
