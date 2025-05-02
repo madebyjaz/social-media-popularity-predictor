@@ -1,0 +1,59 @@
+🎯 Evaluation Summary
+========================================
+Accuracy: 0.4672
+
+Macro Average:
+  precision: 0.4469
+  recall: 0.4422
+  f1-score: 0.4405
+  support: 458.0000
+
+Weighted Average:
+  precision: 0.4565
+  recall: 0.4672
+  f1-score: 0.4576
+  support: 458.0000
+
+📊 Full Classification Report:
+              precision    recall  f1-score   support
+
+        high       0.48      0.42      0.45       137
+         low       0.51      0.63      0.57       191
+      medium       0.34      0.28      0.31       130
+
+    accuracy                           0.47       458
+   macro avg       0.45      0.44      0.44       458
+weighted avg       0.46      0.47      0.46       458
+
+🧾 Confusion Matrix:
+        high  low  medium
+high      57   51      29
+low       30  121      40
+medium    31   63      36
+📉 Training Loss Summary:
+Final Training Loss: 0.0808
+Best Training Loss: 0.0676 (Epoch 173)
+Standard Deviation of Training Loss: 0.2673
+========================================
+
+📉 Average Training Loss (every 10 epochs):
+Epochs 1-10: 0.9843
+Epochs 11-20: 0.8380
+Epochs 21-30: 0.6912
+Epochs 31-40: 0.5533
+Epochs 41-50: 0.4359
+Epochs 51-60: 0.3491
+Epochs 61-70: 0.2799
+Epochs 71-80: 0.2304
+Epochs 81-90: 0.1967
+Epochs 91-100: 0.1648
+Epochs 101-110: 0.1478
+Epochs 111-120: 0.1283
+Epochs 121-130: 0.1203
+Epochs 131-140: 0.1087
+Epochs 141-150: 0.0974
+Epochs 151-160: 0.1012
+Epochs 161-170: 0.0876
+Epochs 171-180: 0.0797
+Epochs 181-190: 0.0833
+Epochs 191-200: 0.0769
