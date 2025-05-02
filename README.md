@@ -55,7 +55,41 @@ Examples:
 ![Confusion Matrix](confusion_matrix.png)
 ![Confusion Matrix (Bar Plot)](confusion_matrix_bar.png)
 ![Training Loss](training-loss-bar.png)
-![Metrics](eval_metrics_summary.txt)
+
+**Evaluation Summary from `eval_metrics_summary.txt`:**
+
+```
+Accuracy: 0.4672
+
+Macro Average:
+  precision: 0.4469
+  recall: 0.4422
+  f1-score: 0.4405
+  support: 458.0000
+
+Weighted Average:
+  precision: 0.4565
+  recall: 0.4672
+  f1-score: 0.4576
+  support: 458.0000
+
+Full Classification Report:
+              precision    recall  f1-score   support
+        high       0.48      0.42      0.45       137
+         low       0.51      0.63      0.57       191
+      medium       0.34      0.28      0.31       130
+
+Confusion Matrix:
+        high  low  medium
+high      57   51      29
+low       30  121      40
+medium    31   63      36
+
+Final Training Loss: 0.0808
+Best Training Loss: 0.0676 (Epoch 173)
+Standard Deviation of Training Loss: 0.2673
+```
+
 ---
 
 ## 📦 Setup & Usage
