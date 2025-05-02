@@ -56,7 +56,7 @@ Examples:
 ![Confusion Matrix (Bar Plot)](confusion_matrix_bar.png)
 ![Training Loss](training-loss-bar.png)
 
-**Evaluation Summary from `eval_metrics_summary.txt`:**
+**🎯Evaluation Summary:**
 
 ```
 Accuracy: 0.4672
@@ -73,13 +73,13 @@ Weighted Average:
   f1-score: 0.4576
   support: 458.0000
 
-Full Classification Report:
+📊Full Classification Report:
               precision    recall  f1-score   support
         high       0.48      0.42      0.45       137
          low       0.51      0.63      0.57       191
       medium       0.34      0.28      0.31       130
 
-Confusion Matrix:
+📉Confusion Matrix:
         high  low  medium
 high      57   51      29
 low       30  121      40
